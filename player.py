@@ -3,7 +3,6 @@ class Player:
     def __init__(self):
         self.__strikes = 0
         self.__balls = 0 
-        self.__score = 1000
         self.__trys = 0
         self._defense_num_list = []
 
@@ -40,10 +39,10 @@ class Player:
         self.__trys = trys
 
     @property
-    def defend_num_list(self):
+    def defense_num_list(self):
         return self._defense_num_list
     
-    @defend_num_list.setter
+    @defense_num_list.setter
     def defense_num_list(self,defense_num_list):
         self._defense_num_list = defense_num_list
     

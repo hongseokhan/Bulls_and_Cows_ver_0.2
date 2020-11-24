@@ -8,7 +8,6 @@ class Human(Player):
     def _input_rule_num_list(self,num_list):
         flag = True
         message = []
-    
         if not(num_list.isdecimal()):
             flag = False
             message = f'{num_list}는 숫자가 아닙니다.'
