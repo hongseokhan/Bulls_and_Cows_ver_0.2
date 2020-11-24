@@ -24,7 +24,6 @@ class Human(Player):
     
     def _input_defense_num_list(self):
         flag = False
-        
         while flag is False:
             self._defense_num_list = input('4자리 숫자를 입력하세요:')
             flag, message = self._input_rule_num_list(self._defense_num_list)

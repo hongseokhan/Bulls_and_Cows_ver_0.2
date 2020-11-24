@@ -1,9 +1,7 @@
 from human import Human
 from computer import Computer
 
-class Gameinterface:
-
-    
+class Gameinterface:    
     def _strikes_and_balls_counter(self,attacker,defender,attack_num_list):
         attacker.strikes = 0
         attacker.balls = 0
@@ -49,37 +47,16 @@ class Gameinterface:
                 print(f'{player1.trys}회 시도만에 게임에 패배 했습니다')
                 print(f'player2 가지고 있는 수비 숫자는 {player2._defense_num_list}입니다')   
                 break
-    def gamerun(self):
-        
+            
+    def _select_game_mode(self):
         mode = input('\n 게임모드를 선택하세요:    ')
-        
         if mode == '1':
             print("PVE 대전모드 입니다.")
             player1  = Computer()
             player2  = Human()
-            print('player1의 수비 4자리 숫자가 랜덤으로 생성되었습니다')
-            player1._random_defense_num_list_generator()
+            player1._generate_random_defense_num_list()
             print('player2의 수비 4자리 숫자를 선택해주세요')
             player2._input_defense_num_list()
-            steps = 1
-            while True:
-                print('-----------------------------------------------')
-                print('플레이어 1의 공격차례 입니다.')
-                if steps == 1:
-                    player1_attack_num_list = player1._step_one_input_num_list(player1)
-                else:
-                    player1_attack_num_list = player1._input_attack_num_list(player1,player1_attack_num_list,steps)
-                self._strikes_and_balls_counter(player1, player2, player1_attack_num_list)
-                self._attack_result(player1)
-                steps += 1
-                print('플레이어 2의 공격차례 입니다.')
-                player2_attack_num_list = player2._input_attack_num_list()
-                self._strikes_and_balls_counter(player2, player1, player2_attack_num_list)
-                self._attack_result(player2)
-                if player1.strikes == 4 or player2.strikes == 4:
-                    self._game_result(player1,player2)
-                    break
-                
         elif mode == '2':
             print("PVP 대전모드 입니다.")
             player1  = Human()
@@ -87,23 +64,37 @@ class Gameinterface:
             print('player1의 수비 4자리 숫자를 선택해주세요')
             player1._input_defense_num_list()
             print('player2의 수비 4자리 숫자를 선택해주세요')
-            player2._input_defense_num_list()
+            player2._input_defense_num_list()    
+        self._gamerun(mode,player1,player2)
+
+    def _gamerun(self,mode,player1,player2):
+        steps=1
+        while True:
+            print('-----------------------------------------------')
+            print('플레이어 1의 공격차례 입니다.')
+            if mode == '1':
+                if steps == 1:
+                    player1_attack_num_list = player1._choose_first_random_attack_num_list()
+                else:
+                    player1_attack_num_list = player1._choose_random_attack_num_list(player1,player1_attack_num_list)
+                steps += 1
+            elif mode ==  '2':
+                player1_attack_num_list =player1._input_attack_num_list()
+            self._strikes_and_balls_counter(player1, player2, player1_attack_num_list)
+            self._attack_result(player1)
+            
+            print('플레이어 2의 공격차례 입니다.')
+            player2_attack_num_list = player2._input_attack_num_list()
+            self._strikes_and_balls_counter(player2, player1, player2_attack_num_list)
+            self._attack_result(player2)
+            
+            if player1.strikes == 4 or player2.strikes == 4:
+                self._game_result(player1,player2)
+                break
+            
+
+            
                 
-                
-            while True:
-                print('-----------------------------------------------')
-                print('플레이어 1의 공격차례 입니다.')
-                player1_attack_num_list = player1._input_attack_num_list()
-                self._strikes_and_balls_counter(player1, player2, player1_attack_num_list)
-                self._attack_result(player1)
-                
-                    
-                print('플레이어 2의 공격차례 입니다.')
-                player2_attack_num_list = player1._input_attack_num_list()
-                self._strikes_and_balls_counter(player2, player1, player2_attack_num_list)
-                self._attack_result(player2)
-                if player1.strikes == 4 or player2.strikes == 4:
-                    self._game_result(player1,player2)
-                    break
+
                 
                 
