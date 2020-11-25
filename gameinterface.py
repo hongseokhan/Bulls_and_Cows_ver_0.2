@@ -31,19 +31,19 @@ class Gameinterface:
                 break
             elif player1.strikes == 4:
                 print('\n player1님 축하합니다')
-                print(f'{player1.trys}회 시도만에 성공 했습니다\n')
-                print(f'player2 가지고 있는 수비 숫자는 {player2._defense_num_list}입니다')
+                print(f'{player1.trys}회 시도만에 성공 했습니다')
+                print(f'player2 가지고 있는 수비 숫자는 {list(player2._defense_num_list)}입니다')
                 print('==============================================')
-                print('\n player2님 아쉽습니다')
+                print('player2님 아쉽습니다')
                 print(f'{player2.trys}회 시도만에 게임에 패배 했습니다.')
                 print(f'player1이 가지고 있는 수비 숫자는 {player1._defense_num_list}입니다')
                 break
             elif player2.strikes == 4:        
                 print('\n player2님 축하합니다')
-                print(f'{player2.trys}회 시도만에 성공 했습니다\n')
-                print(f'player1 가지고 있는 수비 숫자는 {player2._defense_num_list}입니다')
+                print(f'{player2.trys}회 시도만에 성공 했습니다')
+                print(f'player1 가지고 있는 수비 숫자는 {player1._defense_num_list}입니다')
                 print('==============================================')
-                print('\n player1님 아쉽습니다')
+                print(' player1님 아쉽습니다')
                 print(f'{player1.trys}회 시도만에 게임에 패배 했습니다')
                 print(f'player2 가지고 있는 수비 숫자는 {player2._defense_num_list}입니다')   
                 break

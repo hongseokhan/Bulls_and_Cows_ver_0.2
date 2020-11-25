@@ -28,7 +28,9 @@ class Human(Player):
             self._defense_num_list = input('4자리 숫자를 입력하세요:')
             flag, message = self._input_rule_num_list(self._defense_num_list)
             if flag is False:
-                print(message) 
+                print(message)
+            else:
+                return self._defense_num_list
     
     def _input_attack_num_list(self):
         flag = False

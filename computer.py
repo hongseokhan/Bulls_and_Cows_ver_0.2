@@ -43,6 +43,7 @@ class Computer(Player):
     
     def _choose_first_random_attack_num_list(self):
         candidates_num_list = self._make_four_digits_permutation_candidates_num_list_group()
+        print(len(candidates_num_list))
         attack_num_list = choice(candidates_num_list)
         print(attack_num_list)
         return attack_num_list
